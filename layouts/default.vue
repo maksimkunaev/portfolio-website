@@ -2,12 +2,12 @@
   <div class="layout-wrapper">
     <TheHeader />
     <!-- Background Layer -->
-    <div class="background-layer">
+    <!-- <div class="background-layer">
       <div class="gradient-background"></div>
       <div class="neural-background">
         <NeuralVisualization primary-color="#00bcd4" secondary-color="#ffc107" :node-count="30" :speed="0.7" />
       </div>
-    </div>
+    </div> -->
 
 
     <!-- Content Layer -->
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+
 export default {};
 </script>
 
@@ -36,30 +37,7 @@ html, body, #__nuxt, #__layout
   position relative
   min-height 100vh
   width 100%
-
-// Background Layer (z-index: 0)
-.background-layer
-  position absolute
-  top 0
-  left 0
-  width 100%
-  min-height 100%
-  z-index 0
-
-.gradient-background
-  position absolute
-  top 0
-  left 0
-  width 100%
-  height 100%
   background-image linear-gradient(to right, rgb(55, 65, 81), rgb(17, 24, 39), rgb(0, 0, 0))
-
-.neural-background
-  position absolute
-  top 0
-  left 0
-  width 100%
-  height 100%
 
 // Content Layer (z-index: 1)
 .content-layer

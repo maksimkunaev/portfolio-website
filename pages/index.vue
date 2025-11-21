@@ -1,7 +1,10 @@
 <template>
   <div class="index-page-container">
+    <NeuroOrbWrapper />
+
     <div v-for="section in sections" :id="section.link" :key="section.link" class="wrapper">
       <div class="inner">
+
         <div class="component">
           <component :is="section.componentName" />
         </div>
@@ -19,6 +22,7 @@ import Experience from '~/components/Experience/Experience.vue'
 import Skills from '~/components/Skills/Skills.vue'
 import Projects from '~/components/Projects/Projects.vue'
 import Contact from '~/components/Contact/Contact.vue'
+import NeuroOrbWrapper from '~/components/NeuroOrb/NeuroOrbWrapper.vue'
 
 export default {
   name: 'IndexPage',
@@ -28,7 +32,8 @@ export default {
     Experience,
     Skills,
     Projects,
-    Contact
+    Contact,
+    NeuroOrbWrapper
   },
   data() {
     return {
