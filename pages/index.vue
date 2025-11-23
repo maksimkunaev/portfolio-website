@@ -2,7 +2,6 @@
   <div class="index-page-container">
     <div v-for="section in sections" :id="section.link" :key="section.link" class="wrapper">
       <div class="inner">
-
         <div class="component">
           <component :is="section.componentName" />
         </div>

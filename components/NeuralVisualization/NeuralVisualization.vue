@@ -1,44 +1,41 @@
 <template>
   <svg class="network-svg" :width="width" :height="height">
+    <defs>
+
+    </defs>
+
     <line v-for="(conn, i) in connections" :key="`conn-${i}`" :x1="conn.x1" :y1="conn.y1" :x2="conn.x2" :y2="conn.y2"
       :stroke="secondaryColor" stroke-width="1" :opacity="conn.opacity" />
-    <circle v-for="(node, i) in nodes" :key="`node-${i}`" :cx="node.x" :cy="node.y" :r="node.size"
-      :fill="primaryColor" />
+
+    <circle v-for="(node, i) in nodes" :key="`node-${i}`" :cx="node.x" :cy="node.y" :r="node.size" :fill="primaryColor"
+      :class="{ 'glow-circle': glow }" />
   </svg>
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, getCurrentInstance } from 'vue'
 
 export default {
-  name: 'NetworkAnimation',
+  // Renamed to match the usage example
+  name: 'NeuralVisualization',
   props: {
-    primaryColor: {
-      type: String,
-      default: '#00bcd4'
-    },
-    secondaryColor: {
-      type: String,
-      default: '#ffc107'
-    },
-    nodeCount: {
-      type: Number,
-      default: 50
-    },
-    connectionDistance: {
-      type: Number,
-      default: 150
-    },
-    speed: {
-      type: Number,
-      default: 0.5
-    }
+    primaryColor: { type: String, default: '#00bcd4' },
+    secondaryColor: { type: String, default: '#ffc107' },
+    nodeCount: { type: Number, default: 50 },
+    connectionDistance: { type: Number, default: 150 },
+    speed: { type: Number, default: 0.5 },
+    glow: { type: Boolean, default: false }
   },
   setup(props) {
+    const instance = getCurrentInstance()
+    const _uid = instance.uid
+
     const nodes = ref([])
     const connections = ref([])
     const animationRef = ref(null)
     const nodeData = ref([])
+    // Use reactivity for width/height if you need responsiveness, 
+    // but for initial setup, this is fine.
     const width = window.innerWidth
     const height = window.innerHeight
 
@@ -57,9 +54,11 @@ export default {
         node.x += node.vx
         node.y += node.vy
 
-        if (node.x < 0 || node.x > width) node.vx *= -1
-        if (node.y < 0 || node.y > height) node.vy *= -1
+        // Corrected boundary logic for smoother bounce
+        if (node.x <= 0 || node.x >= width) node.vx *= -1
+        if (node.y <= 0 || node.y >= height) node.vy *= -1
 
+        // Enforce boundary limits
         node.x = Math.max(0, Math.min(width, node.x))
         node.y = Math.max(0, Math.min(height, node.y))
       })
@@ -104,7 +103,8 @@ export default {
       nodes,
       connections,
       width,
-      height
+      height,
+      _uid
     }
   }
 }
@@ -112,8 +112,14 @@ export default {
 
 <style scoped>
 .network-svg {
-  width: 100vw;
-  height: 100vh;
+  /* Ensuring it covers the full viewport */
+  width: 100%;
+  height: 100%;
   display: block;
+  /* Add z-index if other elements are interfering */
+}
+
+.glow-circle {
+  filter: drop-shadow(0 0 6px currentColor);
 }
 </style>
