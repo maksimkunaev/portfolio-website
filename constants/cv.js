@@ -99,29 +99,14 @@ export const companies = [
   }
 ];
 
-
+// constants/cv.js
 export const sections = [
   { label: "Home", componentName: "Bio", link: "bio", showLink: false },
   { label: "About me", componentName: "About", link: "about", showLink: true },
-  {
-    label: "Experience",
-    componentName: "Experience",
-    link: "experience",
-    showLink: true,
-  },
+  { label: "Experience", componentName: "Experience", link: "experience", showLink: true },
   { label: "Skills", componentName: "Skills", link: "skills", showLink: true },
-  {
-    label: "Projects",
-    componentName: "Projects",
-    link: "projects",
-    showLink: true,
-  },
-  {
-    label: "Contact",
-    componentName: "Contact",
-    link: "contact",
-    showLink: true,
-  },
+  { label: "Projects", componentName: "Projects", link: "projects", showLink: true },
+  { label: "Contact", componentName: "Contact", link: "contact", showLink: true },
 ];
 
 export const socials = [
@@ -180,7 +165,40 @@ export const education = [
 ];
 
 
+
+
+
 export const projects = [
+  {
+    title: "🌐 NeuroOrb — Interactive 3D Visualization",
+    problemStatement:
+      "AI interfaces lack engaging visual feedback during processing states. Users need dynamic animations that communicate AI activity in an intuitive, visually appealing way.",
+    keyFeatures: [
+      "Real-time 3D particle network with 100+ nodes",
+      "Three state modes: idle, thinking, error",
+      "Programmable animation sequences (color, rotation, squish, pulse)",
+      "Optimized rendering with sub-16ms frame times",
+      "Responsive design adapting to container size",
+    ],
+    technologies: [
+      "Vue.js 3 (Composition API)",
+      "Canvas 2D API (optimized projection)",
+      "Custom physics engine (rotation, pulse, squish)",
+      "Reactive state management",
+    ],
+    screenshots: [
+      "projects/neuroorb/orb1.png", // cyan idle state
+      "projects/neuroorb/orb2.png", // purple thinking
+      "projects/neuroorb/orb3.png", // error view
+    ],
+    date: "2025",
+    link: "/projects/neuro-orb", // Add demo link if deployed
+    results: [
+      "Smooth 60fps animation with 350+ connections",
+      "Customizable sequences for talk/interaction states",
+      "Foundation for AI chat visual feedback system",
+    ],
+  },
   {
     title: "🪄 SimverseLabs — AI Caption Generator",
     problemStatement:

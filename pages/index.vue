@@ -1,7 +1,5 @@
 <template>
   <div class="index-page-container">
-    <NeuroOrbWrapper />
-
     <div v-for="section in sections" :id="section.link" :key="section.link" class="wrapper">
       <div class="inner">
 
