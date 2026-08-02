@@ -107,8 +107,6 @@ export default {
   opacity: 0.7;
   white-space: nowrap;
 
-  transition: all 0.2s, opacity 0.2s;
-
   &:hover, &:focus {
     border-width: 1px;
     opacity: 1;

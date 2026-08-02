@@ -170,6 +170,35 @@ export const education = [
 
 export const projects = [
   {
+    title: "🎬 ClipSpark — AI Viral Clip Generator",
+    problemStatement:
+      "Turning long raw footage into a short, postable clip takes real editing time — finding the hook, cutting the boring parts, and getting pacing right, every single time.",
+    keyFeatures: [
+      "Upload raw video, AI transcribes it and splits it into scenes at natural speech boundaries",
+      "Recursive re-transcription fixes long, poorly-segmented scenes automatically",
+      "LLM picks the strongest hook and curates scenes to fit a target clip length (short/medium/long)",
+      "Review and toggle scenes before rendering, with drag-and-drop final clip ordering",
+      "Burned-in captions with per-word timing, rebased to the final clip",
+    ],
+    technologies: [
+      "React (frontend)",
+      "Python / Flask (backend)",
+      "Groq Whisper (transcription)",
+      "OpenAI (scene curation)",
+      "ffmpeg / libass (render + captions)",
+    ],
+    screenshots: [
+      "projects/clipspark/app-main.png",
+      "projects/clipspark/caption-results.png",
+    ],
+    date: "2026",
+    link: "https://ai-content-editor.nthlabs.org",
+    results: [
+      "Full pipeline (upload → analyze → render → download) live in production",
+      "Raw footage to a ready-to-post clip in seconds, no manual editing",
+    ],
+  },
+  {
     title: "🌐 NeuroOrb — Interactive 3D Visualization",
     problemStatement:
       "AI interfaces lack engaging visual feedback during processing states. Users need dynamic animations that communicate AI activity in an intuitive, visually appealing way.",
@@ -222,7 +251,6 @@ export const projects = [
       "projects/caption_generator/captions3.png",
     ],
     date: "2025",
-    link: "https://simverselabs.com/",
     results: [
       "Generated 5 custom captions in under 10 seconds per upload",
       "Improved engagement through platform-optimized, brand-consistent captions",
@@ -251,7 +279,7 @@ export const projects = [
       "projects/resumequick/resumequick_4.png",
     ],
     date: "2025",
-    // link: "https://resumequick.pro/",
+    link: "https://github.com/maksimkunaev/resumequick.pro",
     results: [
       "Creates basic formatted resume in just one click",
       "Zero learning curve - simple text to PDF conversion",
