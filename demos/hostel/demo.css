@@ -1,0 +1,23 @@
+/* демо: целей четыре, они кнопками; ручные кнопки и редактор стейта скрыты */
+#parse, #run, #reset, .steprow, #state { display: none; }
+#goaltext { height: 34px; pointer-events: none; }
+#presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+#presets button { width: auto; margin: 0; padding: 4px 10px; font-size: 12px; }
+#presets button.on { background: var(--accent); color: #221503; border-color: var(--accent); }
+#tl { left: 16px; }
+
+/* телефон: сцена главная. Сверху только кнопки целей, снизу план в три
+   строки (тап — развернуть); словарь, таймлайн и пояснения скрыты */
+@media (max-width: 640px) {
+  #vocab, #tl, #ctrl h1, #ctrl .sub, #goaltext { display: none; }
+  .card { right: 8px; left: 8px; width: auto; padding: 8px 10px; }
+  #ctrl { top: 8px; }
+  #presets { margin-top: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  #presets button { flex: none; }
+  #goalfacts { margin-top: 6px; }
+  #plan { bottom: 8px; max-height: 5.2em; cursor: pointer; padding-top: 0; }
+  #plan::before { content: "plan · tap to expand ▴"; display: block; position: sticky; top: 0;
+    padding: 6px 0 2px; background: #1a2130; color: var(--accent); }
+  #plan[data-open="1"] { max-height: 62vh; }
+  #plan[data-open="1"]::before { content: "plan · tap to collapse ▾"; }
+}
