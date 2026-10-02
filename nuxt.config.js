@@ -40,7 +40,8 @@ export default defineNuxtConfig({
     '@/assets/css/fonts.styl',
     '@/assets/css/reset.css',
     '@/assets/css/main.styl',
-    '@/assets/css/css-variables.styl'
+    '@/assets/css/css-variables.styl',
+    '@/assets/css/ui.css'
   ],
 
   components: true,

@@ -3,8 +3,15 @@
     <div class="bio-photo">
       <img :src="bio.photo" alt="" />
     </div>
-    <h2 class="header-L bio-name">{{ bio.name }}</h2>
-    <p class="bio-item text-L">{{ bio.occupation }}</p>
+    <h1 class="bio-name">{{ bio.name }}</h1>
+    <p class="bio-occupation">{{ bio.occupation }}</p>
+    <p class="bio-meta muted">{{ bio.location }}</p>
+    <div class="bio-actions">
+      <a class="btn btn-primary" :href="bio.contacts[0].link">Get in touch</a>
+      <a v-for="social in bio.socials" :key="social.link" class="btn" :href="social.link" target="_blank">
+        {{ social.label }}
+      </a>
+    </div>
   </div>
 </template>
 
@@ -13,13 +20,9 @@ import { bio } from "~/constants/cv";
 
 export default {
   name: "Bio",
-  mounted() {
-  },
-
   data() {
     return {
       bio,
-      isLoading: false,
     };
   },
 };
@@ -30,27 +33,46 @@ export default {
   display flex
   flex-direction: column
   align-items: center;
-  max-width: 100%;
-  margin: 0 auto;
-.bio-item, .bio-photo, .bio-name {
-  margin-top: 24px;
-}
+  text-align: center;
 
 .bio-photo
-  width: 300px;
-  height: 300px;
+  width: 148px;
+  height: 148px;
   border-radius: 50%;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-
+  border: 2px solid var(--quaternery-color);
+  box-shadow: var(--primary-shadow);
 
 .bio-photo img
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+
+.bio-name
+  margin-top: 24px;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+
+  @media (max-width: $mobile-size)
+    font-size: 34px;
+
+.bio-occupation
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 500;
+
+.bio-meta
+  margin-top: 8px;
+  font-size: 15px;
+
+.bio-actions
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 </style>

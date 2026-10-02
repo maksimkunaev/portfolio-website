@@ -15,15 +15,16 @@ export const themes = {
   },
   dark: {
     settings: {
-      "--primary-color": "#ddd",
-      "--secondary-color": "#2196f3",
-      "--tertiary-color": "#ddd",
-      "--quaternery-color": "#77777724",
-      "--primary-bg-color": "linear-gradient(to bottom, #1e1e1e, #2a2a2a)",
-      "--secondary-bg-color": "#fff",
-      "--opacity-bg-color": "#8e8e8e12",
-      "--primary-shadow": "2px 1px 6px 0px #ddd",
-      "--border-radius": "8px",
+      "--primary-color": "#e8ebf1",      // text
+      "--secondary-color": "#8e9bb3",    // muted text: dates, labels, captions
+      "--tertiary-color": "#c3cad8",     // body text one step down from primary
+      "--quaternery-color": "#232d42",   // borders
+      "--primary-bg-color": "#0a0e16",   // page
+      "--secondary-bg-color": "#111725", // cards
+      "--opacity-bg-color": "#0a0e16cc", // header, translucent
+      "--accent-color": "#5fd4e8",       // interactive things only
+      "--primary-shadow": "0 8px 24px rgba(0, 0, 0, 0.35)",
+      "--border-radius": "10px",
     },
     label: "🌚",
   },

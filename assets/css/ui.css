@@ -1,0 +1,151 @@
+/* Shared UI: one set of tokens and four building blocks — card, tag, button,
+   disclosure. Accent colour is for things you can click, and nothing else. */
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+body {
+  background: var(--primary-bg-color);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.muted {
+  color: var(--secondary-color);
+}
+
+.section-heading {
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 28px;
+  text-wrap: balance;
+}
+
+.card {
+  background: var(--secondary-bg-color);
+  border: 1px solid var(--quaternery-color);
+  border-radius: 14px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent-color) 45%, transparent);
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--tertiary-color);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--quaternery-color);
+  white-space: nowrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
+  border: 1px solid var(--quaternery-color);
+  color: var(--primary-color);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+  color: var(--primary-color);
+  border-color: var(--accent-color);
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #06121a;
+}
+
+.btn-primary:hover {
+  color: #06121a;
+  background: color-mix(in srgb, var(--accent-color) 85%, white);
+}
+
+/* Disclosure: a native <details>. The toggle is a full-height hit target with
+   a chevron that turns; the content slides open where the browser supports it. */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  color: var(--accent-color);
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.disclosure-toggle::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-top: -4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s, margin-top 0.2s;
+}
+
+details[open] > summary.disclosure-toggle::after,
+details[open] > summary .disclosure-toggle::after {
+  transform: rotate(-135deg);
+  margin-top: 4px;
+}
+
+details::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition: block-size 0.25s ease, content-visibility 0.25s allow-discrete;
+}
+
+details[open]::details-content {
+  block-size: auto;
+}
+
+a:focus-visible,
+summary:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

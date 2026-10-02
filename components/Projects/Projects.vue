@@ -8,8 +8,10 @@
 </template>
 
 <script>
-import { projects } from "~/constants/cv";
+import { projects as allProjects } from "~/constants/cv";
 import Project from "./Project";
+
+const projects = allProjects.filter((project) => !project.hidden);
 
 export default {
   name: "Projects",
@@ -26,28 +28,9 @@ export default {
 
 <style lang="stylus">
 .projects-list
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  margin: 0 auto;
-  gap: 60px;
-
-.projects-item {
-  position: relative;
-  
-  &:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(100, 200, 255, 0.3) 50%, 
-      transparent
-    );
-  }
-}
+  gap: 20px;
 </style>

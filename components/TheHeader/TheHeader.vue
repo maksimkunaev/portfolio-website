@@ -70,8 +70,6 @@ export default {
   scrollbar(0)
   position sticky
   z-index: 99;
-  font-family: sans-serif;
-  
 .header-root
   display: flex;
   align-items: center;
@@ -91,25 +89,23 @@ export default {
   margin-left 16px
 
 .header-button
-  padding: 24px 40px;
+  padding: 20px 16px;
 
   text-decoration: none;
   text-align: center;
-  text-transform: uppercase;
-  color: var(--tertiary-color);
-  border-bottom: 1px solid var(--tertiary-color);
+  letter-spacing: 0.02em;
+  color: var(--secondary-color);
+  border-bottom: 2px solid transparent;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-width: 0;
-  opacity: 0.7;
   white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
 
   &:hover, &:focus {
-    border-width: 1px;
-    opacity: 1;
+    color: var(--primary-color);
   }
 
   @media (max-width: $mobile-size) {
@@ -117,8 +113,8 @@ export default {
   }
 
 .header-active
-  border-width: 1px;
-  opacity: 1;
+  color: var(--primary-color);
+  border-bottom-color: var(--accent-color);
 
 .header-theme
   position: relative;

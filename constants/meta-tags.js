@@ -1,13 +1,10 @@
-const title = "Maksim Kunaev, Frontend & AI Integration Engineer";
+import { bio, shortDescription } from "./cv";
+
+const title = `${bio.name}, ${bio.occupation}`;
 const image = "https://maksimkunaev.github.io/cv-landing/media/photo.png";
 const url = "https://maksimkunaev.github.io/cv-landing/";
 
-import { technologies, bioDescription } from "./cv";
-
-const description = `${bioDescription.replace(
-  /{technologies}/,
-  technologies.join(", ")
-)}`;
+const description = shortDescription;
 
 const meta = {
   title: title,
@@ -30,7 +27,7 @@ const meta = {
     { property: "twitter:image", content: image },
   ],
   link: [
-    { rel: "icon", type: "image/svg+xml", href: "/cv-landing/favicon.svg" },
+    { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
   ],
 };
 

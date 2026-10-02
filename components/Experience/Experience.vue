@@ -2,7 +2,7 @@
   <ul class="experience-list">
     <li
       v-for="company in companies"
-      :key="company.link"
+      :key="company.label"
       class="experience-item"
     >
       <Position :item="company" />
@@ -35,13 +35,17 @@ export default {
   margin: 0 auto;
   flex-wrap wrap
 
+.experience-list {
+  list-style: none;
+  padding: 0;
+}
+
 .experience-item {
-  margin-top: 40px;
   border-bottom: 1px solid var(--quaternery-color);
-  padding-bottom: 24px;
+  padding: 20px 0 12px;
 
   &:first-child {
-    margin-top: 0;
+    padding-top: 0;
   }
 
   &:last-child {

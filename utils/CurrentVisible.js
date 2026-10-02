@@ -1,45 +1,30 @@
-import ViewPortObserver from "@/utils/viewPortObserver.js";
 import { sections } from "~/constants/cv";
+
+const headerOffset = 140;
 
 export default {
   data() {
     return {
-      activeTab: "",
-      tabs: {},
+      computedActiveTab: null,
     };
-  },
-  computed: {
-    computedActiveTab() {
-      const tabs = Object.entries(this.tabs)
-        .sort((a, b) => b[1] - a[1])
-        .filter((a) => a[1]);
-
-      return tabs.length ? tabs[0][0] : null;
-    },
   },
   mounted() {
-    const observer = new ViewPortObserver();
-    observer.onVisibilityChange = (
-      isIntersecting,
-      intersectionRatio,
-      targetId
-    ) => {
-      this.tabs[targetId] = isIntersecting ? intersectionRatio : 0;
-    };
-    sections.forEach(({ link }) => {
-      const anchorElement = document.querySelector(`#${link}`);
-      if (anchorElement) {
-        observer.observe(anchorElement);
-      } else {
-        console.warn(`Element with id #${link} not found`);
-      }
-    });
+    this.updateActiveTab();
+    window.addEventListener("scroll", this.updateActiveTab, { passive: true });
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.updateActiveTab);
   },
   methods: {
-    changeVisibleElement(isVisbible, linkId) {
-      if (isVisbible) {
-        this.activeTab = linkId;
-      }
+    updateActiveTab() {
+      let current = null;
+      sections.forEach(({ link }) => {
+        const element = document.getElementById(link);
+        if (element && element.getBoundingClientRect().top <= headerOffset) {
+          current = link;
+        }
+      });
+      this.computedActiveTab = current;
     },
   },
 };

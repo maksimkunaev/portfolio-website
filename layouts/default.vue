@@ -53,14 +53,17 @@ html, body, #__nuxt, #__layout
   left 0
   width 100%
   height 100%
-  background-image linear-gradient(to right, rgb(55, 65, 81), rgb(17, 24, 39), rgb(0, 0, 0))
+  background radial-gradient(1200px 600px at 50% -200px, rgba(95, 212, 232, 0.10), transparent 70%), var(--primary-bg-color)
 
 .neural-background
   position absolute
   top 0
   left 0
   width 100%
-  height 100%
+  height 100vh
+  opacity 0.5
+  mask-image linear-gradient(to bottom, #000 55%, transparent)
+  pointer-events none
 
 // Content Layer (z-index: 1)
 .content-layer
@@ -72,7 +75,6 @@ html, body, #__nuxt, #__layout
   display flex
   flex-direction column
   min-height 100vh
-  font-family sans-serif
   color var(--primary-color)
   transition color 0.2s, background-color 0.2s
   padding-bottom 48px
@@ -80,6 +82,5 @@ html, body, #__nuxt, #__layout
 
 .main-content
   flex 1
-  text-shadow: 4px 4px 3px #0000005e, 8px 8px 12px #0000003b
   // Main content area - transparent background
 </style>

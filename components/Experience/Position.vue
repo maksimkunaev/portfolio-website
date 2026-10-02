@@ -1,21 +1,21 @@
 <template>
-  <div class="position-root">
-    <h2 class="header-M position-name">{{ item.position }}</h2>
-
-    <a :href="item.link" target="_blank" class="position-title">
-      <span class="text-S position-selected">{{ item.label }} </span>
-
-      <span class="text-S position-date"
-        >{{ item.startDate }} - {{ item.endDate }}</span
-      >
-    </a>
+  <details class="position-root">
+    <summary class="position-head">
+      <span class="position-line">
+        <span class="position-name">{{ item.position }}</span>
+        <span class="position-date muted">{{ item.startDate }} – {{ item.endDate }}</span>
+      </span>
+      <span class="position-company muted">{{ item.label }}</span>
+      <span v-if="item.summary" class="position-summary">{{ item.summary }}</span>
+      <span class="disclosure-toggle">Details</span>
+    </summary>
 
     <ul class="position-responsibilities">
-      <li v-for="(responsibility, index) in item.responsibilities" :key="index" class="text-S position-responsibility-item">
+      <li v-for="(responsibility, index) in item.responsibilities" :key="index" class="position-responsibility-item">
         {{ responsibility }}
       </li>
     </ul>
-  </div>
+  </details>
 </template>
 
 <script>
@@ -31,34 +31,51 @@ export default {
 </script>
 
 <style lang="stylus">
-.position-root {
-  display flex
-  flex-direction: column
+.position-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.position-title {
-  display flex
-  align-items: center;
-  text-decoration: none;
+.position-line {
+  display: flex;
+  align-items: baseline;
   justify-content: space-between;
-  margin-top 16px
+  gap: 16px;
 }
 
 .position-name {
-  text-transform uppercase
+  font-size: 18px;
+  font-weight: 650;
 }
 
-.position-selected
-  color: var(--secondary-color);
+.position-date {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.position-company {
+  font-size: 15px;
+}
+
+.position-summary {
+  margin-top: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--tertiary-color);
+}
 
 .position-responsibilities {
-  margin-top: 16px;
+  padding: 4px 0 8px 20px;
+  list-style: disc;
+  max-width: 75ch;
 }
 
 .position-responsibility-item {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--tertiary-color);
   margin-bottom: 8px;
 }
-
-.position-date
-  text-align right
 </style>

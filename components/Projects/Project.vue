@@ -1,51 +1,39 @@
 <template>
-  <div class="project-card" :class="{ 'alternate': alternate }">
-    <!-- Screenshots Side -->
+  <div class="card project-card" :class="{ 'alternate': alternate }">
     <div class="project-visual">
       <ImageSlider v-if="item.screenshots" :images="item.screenshots" :alt-prefix="item.title" />
     </div>
 
-    <!-- Content Side -->
     <div class="project-info">
-      <div class="project-header">
-        <h2 class="project-title">{{ item.title }}</h2>
-        <span class="project-date">{{ item.date }}</span>
-      </div>
+      <span class="project-date muted">{{ item.date }}</span>
+      <h3 class="project-title">{{ item.title }}</h3>
+      <p class="project-headline">{{ item.headline || item.problemStatement }}</p>
 
-      <div class="section">
-        <h3 class="section-title">Problem</h3>
-        <p class="section-text">{{ item.problemStatement }}</p>
-      </div>
+      <ul class="tag-list">
+        <li v-for="(tech, index) in item.technologies" :key="index" class="tag">{{ tech }}</li>
+      </ul>
 
-      <div class="section">
-        <h3 class="section-title">Solution</h3>
-        <ul class="list">
-          <li v-for="(feature, index) in item.keyFeatures" :key="index">
-            {{ feature }}
-          </li>
+      <details class="project-details">
+        <summary class="disclosure-toggle">Problem, solution and impact</summary>
+
+        <h4 class="project-label">Problem</h4>
+        <p class="project-text">{{ item.problemStatement }}</p>
+
+        <h4 class="project-label">Solution</h4>
+        <ul class="project-list">
+          <li v-for="(feature, index) in item.keyFeatures" :key="index">{{ feature }}</li>
         </ul>
-      </div>
 
-      <div class="section">
-        <h3 class="section-title">Tech Stack</h3>
-        <div class="tech-stack">
-          <span v-for="(tech, index) in item.technologies" :key="index" class="tech-tag">
-            {{ tech }}
-          </span>
-        </div>
-      </div>
+        <template v-if="item.results">
+          <h4 class="project-label">Impact</h4>
+          <ul class="project-list">
+            <li v-for="(result, index) in item.results" :key="index">{{ result }}</li>
+          </ul>
+        </template>
+      </details>
 
-      <div v-if="item.results" class="section results">
-        <h3 class="section-title">Impact</h3>
-        <ul class="list impact-list">
-          <li v-for="(result, index) in item.results" :key="index">
-            {{ result }}
-          </li>
-        </ul>
-      </div>
-
-      <a v-if="item.link" :href="item.link" target="_blank" class="project-link">
-        View Live Project →
+      <a v-if="item.link" :href="item.link" target="_blank" class="btn project-link">
+        View live project
       </a>
     </div>
   </div>
@@ -82,177 +70,91 @@ export default {
 .project-card {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: 1.8rem;
-  padding: 2rem;
-  border-radius: 12px;
-  background: rgba(40, 50, 70, 0.25);
-  border: 1px solid rgba(100, 200, 255, 0.1);
-  transition: all 0.3s;
-  
-  &:hover {
-    border-color: rgba(100, 200, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(100, 200, 255, 0.15);
-  }
+  gap: 28px;
+  padding: 24px;
+  align-items: start;
 
   &.alternate {
     grid-template-columns: 1.1fr 0.9fr;
-    
+
     .project-visual {
       order: 2;
-    }
-    
-    .project-info {
-      order: 1;
     }
   }
 
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    
+
     &.alternate {
-      grid-template-columns: 1fr
+      grid-template-columns: 1fr;
+
       .project-visual {
-        order: 1;
-      }
-      
-      .project-info {
-        order: 2;
+        order: 0;
       }
     }
   }
 }
 
 .project-visual {
-  display: flex;
-  align-items: flex-start;
-  max-height: 500px;
+  max-height: 420px;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .project-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.project-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(100, 200, 255, 0.2);
-}
-
-.project-title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.3;
+  align-items: flex-start;
 }
 
 .project-date {
-  color: rgba(100, 200, 255, 0.6);
-  font-size: 0.875rem;
-  font-weight: 500;
-  flex-shrink: 0;
+  font-size: 13px;
 }
 
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.project-title {
+  margin-top: 4px;
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.25;
 }
 
-.section-title {
-  margin: 0;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: rgba(100, 200, 255, 0.9);
+.project-headline {
+  margin: 10px 0 16px;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--tertiary-color);
+}
+
+.project-details {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.project-label {
+  margin: 12px 0 6px;
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
+  color: var(--secondary-color);
 }
 
-.section-text {
-  margin: 0;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.95rem;
+.project-text, .project-list {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--tertiary-color);
 }
 
-.list {
-  padding-left: 1.25rem;
-  margin: 0;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.9rem;
-  list-style: circle;
-  
+.project-list {
+  padding-left: 20px;
+  list-style: disc;
+
   li {
-    margin-bottom: 0.4rem;
-  }
-}
-
-.impact-list {
-  list-style: none;
-  padding-left: 0;
-  
-  li {
-    position: relative;
-    padding-left: 1.5rem;
-    
-    &::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: rgba(100, 200, 255, 0.8);
-      font-weight: bold;
-    }
-  }
-}
-
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tech-tag {
-  background: rgba(100, 200, 255, 0.12);
-  color: rgba(100, 200, 255, 0.95);
-  border: 1px solid rgba(100, 200, 255, 0.25);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  transition: all 0.2s;
-  
-  &:hover {
-    background: rgba(100, 200, 255, 0.2);
-    border-color: rgba(100, 200, 255, 0.4);
+    margin-bottom: 6px;
   }
 }
 
 .project-link {
-  display: inline-flex;
-  align-items: center;
-  color: rgba(100, 200, 255, 0.95);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid rgba(100, 200, 255, 0.3);
-  border-radius: 8px;
-  background: rgba(100, 200, 255, 0.05);
-  transition: all 0.2s;
-  align-self: flex-start;
-  margin-top: 0.5rem;
-  
-  &:hover {
-    background: rgba(100, 200, 255, 0.15);
-    border-color: rgba(100, 200, 255, 0.5);
-    transform: translateX(4px);
-  }
+  margin-top: 16px;
 }
 </style>

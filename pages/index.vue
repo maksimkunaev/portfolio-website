@@ -1,12 +1,11 @@
 <template>
   <div class="index-page-container">
-    <div v-for="section in sections" :id="section.link" :key="section.link" class="wrapper">
-      <div class="inner">
-        <div class="component">
-          <component :is="section.componentName" />
-        </div>
+    <section v-for="section in sections" :id="section.link" :key="section.link" class="wrapper">
+      <div class="component">
+        <h2 v-if="section.heading" class="section-heading">{{ section.heading }}</h2>
+        <component :is="section.componentName" />
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -18,8 +17,10 @@ import About from '~/components/About/About.vue'
 import Experience from '~/components/Experience/Experience.vue'
 import Skills from '~/components/Skills/Skills.vue'
 import Projects from '~/components/Projects/Projects.vue'
+import Research from '~/components/Research/Research.vue'
+import ClientWork from '~/components/ClientWork/ClientWork.vue'
+import Writing from '~/components/Writing/Writing.vue'
 import Contact from '~/components/Contact/Contact.vue'
-import NeuroOrbWrapper from '~/components/NeuroOrb/NeuroOrbWrapper.vue'
 
 export default {
   name: 'IndexPage',
@@ -29,8 +30,10 @@ export default {
     Experience,
     Skills,
     Projects,
+    Research,
+    ClientWork,
+    Writing,
     Contact,
-    NeuroOrbWrapper
   },
   data() {
     return {
@@ -41,27 +44,20 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import "../assets/css/stylus-variables.styl" // путь относительно текущего .vue файла
-
-$header-height = 80px
+@import "../assets/css/stylus-variables.styl"
 
 .wrapper
-  overflow: auto;
-  margin: 0 auto;
+  padding: 72px 24px 0;
+  scroll-margin-top: 40px;
 
-  &:nth-child(2n)
-    .inner
-      background-color: var(--opacity-bg-color);
-.inner
-  padding: 48px 24px
-  margin-top $header-height
+  &:first-child
+    padding-top: 120px;
 
-  @media only screen and (max-device-width: $tablet-size)
-    margin-top: 40px;
-    padding: 16px;
+  &:nth-child(2)
+    padding-top: 32px;
 
-  @media only screen and (max-device-width: $mobile-size)
-    margin-top: 20px;
+  @media (max-width: $mobile-size)
+    padding: 56px 16px 0;
 
 .component
   width: $layout-width;
