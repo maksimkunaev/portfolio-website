@@ -70,7 +70,7 @@ export const shipped = [
 ];
 
 // One-liner for meta tags and link previews, where the full About is too long.
-export const shortDescription = `Full-stack engineer building AI products end-to-end — LLM tools, RAG, voice and video-generation pipelines in React, TypeScript and Python.`;
+export const shortDescription = `Full-stack engineer building AI products end-to-end — LLM tools, RAG, voice, image and video generation in React, TypeScript and Python.`;
 
 // LinkedIn is a funnel; the site is the depth. The headline uses the words the
 // market puts in job titles: in 98 postings (Jul–Oct 2026) "fullstack" appeared
@@ -214,10 +214,10 @@ export const sections = [
 export const clientWork = {
   items: [
     {
-      title: "AI video-generation pipeline",
-      headline: "How do you make generated video worth watching?",
+      title: "AI image & video generation",
+      headline: "From an idea to finished images and video.",
       diagram: "video",
-      visual: "An AI agent producing a video frame",
+      visual: "An AI agent producing an image and a video frame",
       period: "Sep 2025 — present · long-term client",
       what: "A product that turns an idea into finished images and video.",
       built: "Image and video generation assembled into one product, with the web app around it built from scratch: frontend, backend, deployment.",
@@ -245,7 +245,7 @@ export const clientWork = {
     },
     {
       title: "Vibe-coded Chrome extension → production",
-      headline: "Worked in the demo. Broke in real use.",
+      headline: "Took a demo-grade extension and made it hold up in real use.",
       diagram: "extension",
       visual: "Code going to production, and staying stable there",
       period: "2025",
