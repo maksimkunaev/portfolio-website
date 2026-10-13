@@ -83,8 +83,7 @@ const resumeJobs = companies
     bullets: job.resumeKeep ? job.resumeKeep.map((i) => job.responsibilities[i]) : job.responsibilities,
   }));
 const researchLine =
-  "A reasoning engine where the world is executable code that judges the model and every answer is a trace. " +
-  "Six experiments, each with a verdict; live demo on the site.";
+  "Experiments on one question: how to make an agent reliable — explicit state, explicit rules, and code that checks the model instead of the model checking itself. Live demo on the site.";
 </script>
 
 <style>
