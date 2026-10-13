@@ -76,7 +76,7 @@ export const shortDescription = `Full-stack engineer building AI products end-to
 // none, 3–5 bullets per role, short old roles dropped. `resumeKeep` on a
 // company lists the bullet indexes the PDF prints; `resume: false` hides the
 // role from the PDF. The site always shows everything.
-export const resumeSummary = `Full-stack engineer: six years of frontend, since 2025 full stack with AI — agents with tool calling, retrieval, voice, image and video generation, built for clients and running in production. I split every flow into steps with explicit contracts and put a model only where it beats code, so a wrong output points at the step that produced it.`;
+export const resumeSummary = `Full-stack engineer: six years of frontend, since 2025 full stack with AI — agents, retrieval, voice, image and video generation, built for clients and running in production. A model only where it beats code; every step has a contract you can check.`;
 
 // LinkedIn is a funnel; the site is the depth. The headline uses the words the
 // market puts in job titles: in 98 postings (Jul–Oct 2026) "fullstack" appeared
