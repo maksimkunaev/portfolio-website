@@ -72,6 +72,12 @@ export const shipped = [
 // One-liner for meta tags and link previews, where the full About is too long.
 export const shortDescription = `Full-stack engineer building AI products end-to-end — LLM tools, RAG, voice, image and video generation in React, TypeScript and Python.`;
 
+// One-page PDF (/cv). r/EngineeringResumes rules: summary of two lines or
+// none, 3–5 bullets per role, short old roles dropped. `resumeKeep` on a
+// company lists the bullet indexes the PDF prints; `resume: false` hides the
+// role from the PDF. The site always shows everything.
+export const resumeSummary = `Full-stack engineer: six years of frontend, since 2025 full stack with AI — agents with tool calling, retrieval, voice, image and video generation, built for clients and running in production. I split every flow into steps with explicit contracts and put a model only where it beats code, so a wrong output points at the step that produced it.`;
+
 // LinkedIn is a funnel; the site is the depth. The headline uses the words the
 // market puts in job titles: in 98 postings (Jul–Oct 2026) "fullstack" appeared
 // 24 times, "frontend" 22, "product engineer" once. AI goes after the title,
@@ -102,6 +108,7 @@ export const companies = [
     position: "Full-Stack & AI Engineer",
     startDate: "Feb 2025",
     endDate: "Present",
+    resumeKeep: [0, 1, 3, 4, 5],
     summary:
       "Independent contracts since 2025: one long-term product build, several shorter AI projects.",
     responsibilities: [
@@ -122,6 +129,7 @@ export const companies = [
     position: "Frontend Engineer",
     startDate: "Oct 2021",
     endDate: "Feb 2025",
+    resumeKeep: [0, 3, 4, 7],
     summary: "Frontend performance, 40+ product features, architecture, internal seminars.",
     responsibilities: [
       "Led frontend performance improvements: implemented lazy loading, reducing render time from 1–2 minutes to under 5 seconds.",
@@ -141,6 +149,7 @@ export const companies = [
     position: "Frontend Developer",
     startDate: "Nov 2019",
     endDate: "Oct 2021",
+    resumeKeep: [0, 2],
     summary: "Led the frontend of a real-estate product in Vue.js: 20+ pages, dashboards, data visualization.",
     responsibilities: [
       "Directed frontend architecture using Vue.js and Vuex; built 20+ responsive UI pages.",
@@ -156,6 +165,7 @@ export const companies = [
     position: "Frontend Developer",
     startDate: "Aug 2019",
     endDate: "Oct 2019",
+    resume: false,
     summary: "Shared UI component libraries and cross-browser documentation.",
     responsibilities: [
       "Developed reusable UI component libraries shared across multiple projects.",
@@ -170,6 +180,7 @@ export const companies = [
     position: "React Developer",
     startDate: "Sep 2018",
     endDate: "Aug 2019",
+    resumeKeep: [0, 1],
     summary: "React dashboards and order forms for a crypto exchange; 50+ features.",
     responsibilities: [
       "Built scalable React.js dashboards and order forms, improving load time 2–3×.",
@@ -184,6 +195,7 @@ export const companies = [
     position: "Landing Page Developer",
     startDate: "Jun 2018",
     endDate: "Sep 2018",
+    resume: false,
     summary: "Responsive landing pages and performance optimization.",
     responsibilities: [
       "Created and optimized 10+ responsive landing pages.",

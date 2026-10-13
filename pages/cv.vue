@@ -15,7 +15,7 @@
 
     <section class="cv-section">
       <h2>Summary</h2>
-      <p v-for="(para, i) in summary" :key="i" class="cv-para">{{ para }}</p>
+      <p class="cv-para">{{ resumeSummary }}</p>
     </section>
 
     <section class="cv-section">
@@ -30,14 +30,14 @@
 
     <section class="cv-section">
       <h2>Experience</h2>
-      <div v-for="job in companies" :key="job.label + job.startDate" class="cv-job">
+      <div v-for="job in resumeJobs" :key="job.label + job.startDate" class="cv-job">
         <div class="cv-job-head">
           <span class="cv-job-title">{{ job.position }}</span>
           <span class="cv-job-where">· {{ job.label }} · {{ job.location }}</span>
           <span class="cv-job-dates">{{ job.startDate }} – {{ job.endDate }}</span>
         </div>
         <ul>
-          <li v-for="(line, i) in job.responsibilities" :key="i">{{ line }}</li>
+          <li v-for="(line, i) in job.bullets" :key="i">{{ line }}</li>
         </ul>
       </div>
     </section>
@@ -64,7 +64,7 @@
 </template>
 
 <script setup>
-import { bio, bioDescription, companies, skillGroups, research, education, contacts } from "~/constants/cv";
+import { bio, resumeSummary, companies, skillGroups, research, education, contacts } from "~/constants/cv";
 
 definePageMeta({ layout: "cv" });
 useHead({ title: `${bio.name} — CV`, htmlAttrs: { class: "cv-page" } });
@@ -75,11 +75,16 @@ const route = useRoute();
 const phone = route.query.phone || "";
 const email = contacts[0].label;
 
-const summary = bioDescription.split("\n\n");
+// Roles with resume:false stay on the site only; resumeKeep picks the bullets.
+const resumeJobs = companies
+  .filter((job) => job.resume !== false)
+  .map((job) => ({
+    ...job,
+    bullets: job.resumeKeep ? job.resumeKeep.map((i) => job.responsibilities[i]) : job.responsibilities,
+  }));
 const researchLine =
-  "Side research since 2024: the world is executable code that judges the model, and every answer is a trace. " +
-  "Six experiments, each with a verdict; the current one accepts candidate rules only by execution, in a 3D world. " +
-  "Live demo on the site.";
+  "A reasoning engine where the world is executable code that judges the model and every answer is a trace. " +
+  "Six experiments, each with a verdict; live demo on the site.";
 </script>
 
 <style>
@@ -88,15 +93,15 @@ html.cv-page, html.cv-page body { background: #ffffff; }
   max-width: 820px;
   margin: 0 auto;
   padding: 40px 32px 56px;
-  font-size: 10.6pt;
-  line-height: 1.42;
+  font-size: 10pt;
+  line-height: 1.35;
 }
 .cv h1 { font-size: 22pt; font-weight: 700; margin: 0 0 2px; letter-spacing: -0.01em; }
 .cv-title { font-size: 11.5pt; color: #2a3346; margin: 0 0 4px; }
 .cv-contact { margin: 0; color: #4a5468; font-size: 9.6pt; display: flex; flex-wrap: wrap; gap: 0 6px; }
 .cv-contact span + span::before { content: "·"; margin-right: 6px; color: #9aa3b5; }
 
-.cv-section { margin-top: 14px; break-inside: auto; }
+.cv-section { margin-top: 10px; break-inside: auto; }
 .cv h2 {
   font-size: 9.2pt; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
   color: #1a1f2b; border-bottom: 1px solid #d5dae4; padding-bottom: 3px; margin: 0 0 7px;
@@ -107,7 +112,7 @@ html.cv-page, html.cv-page body { background: #ffffff; }
 .cv-skills dt { font-weight: 600; color: #2a3346; }
 .cv-skills dd { margin: 0; }
 
-.cv-job { margin-bottom: 9px; break-inside: avoid; }
+.cv-job { margin-bottom: 6px; break-inside: avoid; }
 .cv-job-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 6px; margin-bottom: 2px; }
 .cv-job-title { font-weight: 700; }
 .cv-job-where { color: #4a5468; }
@@ -115,9 +120,9 @@ html.cv-page, html.cv-page body { background: #ffffff; }
 .cv ul { margin: 0; padding-left: 16px; list-style: disc; }
 .cv li { margin: 0 0 2px; }
 
-@page { size: A4; margin: 12mm 13mm; }
+@page { size: A4; margin: 11mm 12mm; }
 @media print {
-  .cv { max-width: none; padding: 0; font-size: 10pt; }
+  .cv { max-width: none; padding: 0; font-size: 9.8pt; }
   a { color: inherit; text-decoration: none; }
 }
 </style>
