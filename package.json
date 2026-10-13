@@ -9,7 +9,8 @@
     "generate": "nuxi generate",
     "postgenerate": "node create-cname.js",
     "deploy": "push-dir --dir=.output/public --branch=gh-pages --cleanup",
-    "full-deploy": "npm run generate && npm run postgenerate && npm run deploy"
+    "full-deploy": "npm run generate && npm run postgenerate && npm run deploy",
+    "cv:pdf": "scripts/cv-pdf.sh"
   },
   "dependencies": {
     "@nuxtjs/style-resources": "^1.2.2",

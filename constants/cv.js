@@ -129,7 +129,7 @@ export const companies = [
       "Developed unit and integration tests (Jest, Vitest) to ensure UI stability.",
       "Delivered 40+ new product features and improved customer experience.",
       "Collaborated with backend teams to integrate REST and SOAP APIs, reducing error rates by 30%.",
-      "Enhanced CI/CD pipelines (Jenkins, GitHub Actions) to optimize builds and deployments.",
+      "Enhanced CI/CD pipelines (GitHub Actions) to optimize builds and deployments.",
       "Ran internal seminars on frontend architecture and performance for 20+ engineers; prepared a project handover for the client team — mapped the system end to end and presented it.",
       "Authored 15-page technical documentation, reducing onboarding time by 40%."
     ]
@@ -438,7 +438,7 @@ export const skills = [
   "Databases and auth: PostgreSQL, MongoDB, Supabase, JWT/OAuth",
   "Automated testing with Jest, Vitest, and Cypress",
   "Performance optimization – lazy loading, code splitting, rendering efficiency",
-  "CI/CD with Jenkins and GitHub Actions; Docker, VPS deployment, GraphQL",
+  "CI/CD with GitHub Actions; Docker, nginx, VPS deployment, GraphQL",
   "Team leadership, documentation, and mentoring experience",
   "Languages: English (Fluent), Russian (Native), Spanish (Basic), Serbian-Croatian (Intermediate)"
 ];
@@ -450,7 +450,7 @@ export const skillGroups = [
   { label: "AI", items: ["LLM tool calling", "RAG", "Multi-step pipelines", "OpenAI / Groq APIs", "Local models (Ollama, llama.cpp)", "Fine-tuning (Qwen, PyTorch)", "Whisper"] },
   { label: "Frontend", items: ["React", "TypeScript", "Vue", "Next.js", "Nuxt", "Angular", "Redux / MobX"] },
   { label: "Backend", items: ["Python (Flask, FastAPI)", "Node.js", "PostgreSQL", "MongoDB", "REST", "WebSockets"] },
-  { label: "Delivery", items: ["Docker", "nginx", "GitHub Actions", "Jenkins", "Jest / Vitest / Cypress"] },
+  { label: "Delivery", items: ["Docker", "nginx", "GitHub Actions", "Jest / Vitest / Cypress"] },
   { label: "Languages", items: ["English (fluent)", "Russian (native)", "Spanish (basic)", "Serbian-Croatian (intermediate)"] },
 ];
 
