@@ -46,13 +46,13 @@ export const technologies = [
 // a generator, a validator or an extractor. What makes the pipeline debuggable
 // is that every step declares what it takes and returns — so any one of them
 // can be swapped between code and a model without touching the rest.
-export const bioDescription = `Full-stack engineer building AI products end-to-end. Six years of frontend (React, Vue, TypeScript), then in 2025 I moved fully into full stack with AI integrations: 7+ freelance contracts at a 100% job success rate, and a long-term client for whom I build a full product from scratch — React frontend, Python backend, deployment.
+export const bioDescription = `Full-stack engineer. Six years of frontend, and since 2025 full stack with AI: agents with tool calling, retrieval, voice, image and video generation — built for clients and running in production.
 
-What I've shipped: LLM tool calling and chat assistants written from scratch, RAG retrieval and agent memory, voice with Whisper and ElevenLabs, local model fine-tuning (Qwen), image and video generation, and bug fixing and refinement of vibe-coded apps to get them to production.
+Now: one long-term contract — a product built from scratch (React, Python, deployment), from idea to generated images and video.
 
-My approach is the same everywhere: I decide the architecture, then split the flow into components with explicit contracts — and implement each one with whatever actually fits. Deterministic code where the step can be verified, a language model only where it genuinely wins. Most AI features don't fail because the model is weak; they fail because when the output is wrong, nobody can tell which step broke.
+How I work: I decide the architecture, split the flow into steps with explicit contracts, and put a model only where it beats code. Every step is evaluated on its own, so a wrong output points at the step that produced it.
 
-Aion is my long-running playground for that question — a symbolic reasoning engine where the world is executable code that judges the model, instead of the model judging itself.`;
+Side research: Aion, a reasoning engine where the world is code and the code judges the model. I'm building it to find out where an agent's rules can come from. Live demo on my site.`;
 
 // The site shows this short version: two lines and a row of tags. The long
 // bioDescription above is for the resume summary, where there are no tags.
@@ -79,47 +79,22 @@ export const shortDescription = `Full-stack engineer building AI products end-to
 // positions, so frontend searches still match.
 export const linkedin = {
   headline:
-    "Senior Full-Stack Engineer · AI / LLM | React · TypeScript · Python · RAG · Agents",
-  about: `I build AI features that hold up in production, not just in demos.
+    "Senior Full-Stack Engineer · AI agents and generation pipelines in production | TypeScript · React · Python",
+  about: `Full-stack engineer. Six years of frontend, and since 2025 full stack with AI: agents with tool calling, retrieval, voice, image and video generation — built for clients and running in production.
 
-Six years of frontend (React, Vue, TypeScript), then in 2025 I moved fully into full stack with AI integrations: 7+ freelance contracts at a 100% job success rate, and a long-term client for whom I build a full product from scratch — React frontend, Python backend, deployment.
+Now: one long-term contract — a product built from scratch (React, Python, deployment), from idea to generated images and video.
 
-What I've shipped: LLM tool calling and chat assistants written from scratch, RAG retrieval and agent memory, voice with Whisper and ElevenLabs, local model fine-tuning (Qwen), image and video generation, and bug fixing and refinement of vibe-coded apps to get them to production.
+How I work: I decide the architecture, split the flow into steps with explicit contracts, and put a model only where it beats code. Every step is evaluated on its own, so a wrong output points at the step that produced it.
 
-My method is the same on every project: I decide the architecture, split the flow into steps with explicit contracts, and use a model only where it beats code — so when the output is wrong, you can see which step broke.
-
-That question is also my side research. For two years I've been running small experiments on Aion, a symbolic reasoning engine where the world is executable code that judges the model. One result I keep coming back to: a model graded its own rules 24 out of 28; executing them gave 1 out of 28.
+Side research: Aion, a reasoning engine where the world is code and the code judges the model. I'm building it to find out where an agent's rules can come from. Live demo on my site.
 
 Madrid · open to full-stack and AI engineering roles, remote or on-site.`,
 };
 
 export const companies = [
-  // 2025+ work carries no client names (M, 2026-10-02): entries describe what
-  // was built. The long-term contract gets general wording only — no product
-  // details, no screenshots, and the page never says "NDA".
-  {
-    label: "Long-term client",
-    link: "",
-    location: "Remote",
-    position: "Full-Stack & AI Engineer",
-    startDate: "Dec 2025",
-    endDate: "Present",
-    summary:
-      "Ongoing contract with one client: a full product built from scratch, and an AI video-generation pipeline.",
-    responsibilities: [
-      "Built a full web application from scratch: React frontend, Python backend, deployment on a VPS with nginx, domain and SSL configuration.",
-      "Designed and built an AI content pipeline for video generation: image generation, prompt configuration, assembly into finished short videos.",
-      "Worked out which components of the output affect viewer retention, and tuned the pipeline around them.",
-      "Made the pipeline a step-by-step run, so each stage can be reviewed and re-run on its own instead of regenerating everything.",
-      "Integrated third-party platform APIs (e-commerce and social).",
-      "Own the work end to end: architecture, implementation, deployment and maintenance.",
-    ],
-  },
-  // Closes the Feb 2025 gap. The class of system says more to a reader than a
-  // startup they've never heard of. No score-card lines (M, 2026-10-02): the
-  // contract count and success rate appear once, in the About sentence, and
-  // nowhere else. Never hours, and no link to the freelance profile: it shows
-  // an hourly rate.
+  // 2025+ work carries no client names (M, 2026-10-02): one Freelance entry,
+  // the long-term contract as its first block. No score-card lines, no hours,
+  // no link to the freelance profile, and the page never says "NDA".
   {
     label: "Freelance",
     link: "",
@@ -128,16 +103,16 @@ export const companies = [
     startDate: "Feb 2025",
     endDate: "Present",
     summary:
-      "Independent contracts for several clients: AI assistants, RAG, voice, browser extensions, mobile.",
+      "Independent contracts since 2025: one long-term product build, several shorter AI projects.",
     responsibilities: [
-      "Built an AI chat assistant from scratch that classifies user intent, resolves parameters, and dispatches a list of API actions — React frontend, Node.js backend, OpenAI function calling.",
-      "Built an AI trading-assistant chat bot with LLM tool calling.",
-      "Built the frontend and retrieval layer for a RAG document Q&A system with vector embeddings; agent memory on top of retrieval.",
-      "Took over an AI-generated (vibe-coded) Chrome extension and made it production-ready: fixed the failure cases, restructured the capture flow into a reliable event stream.",
-      "Integrated speech and audio generation (Whisper, ElevenLabs) and image generation into client applications.",
-      "Fine-tuned and ran local models (Qwen, Ollama, llama.cpp).",
-      "Delivered a React Native client for a model-scored submission app.",
-      "Recurring pattern across projects: define the architecture, give each step an explicit contract, and let the model handle only the steps where it beats code.",
+      "Long-term client (Sep 2025 – present): full web app from scratch — React, Python, nginx deploy — with AI image and video generation inside; e-commerce and social platform integrations.",
+      "AI chat assistant from scratch: intent → parameters → API actions (React, Node.js, OpenAI function calling).",
+      "AI trading bot answering from live data via tool calling.",
+      "RAG document Q&A: frontend and retrieval layer, agent memory.",
+      "Vibe-coded Chrome extension taken to production: failure cases fixed, capture flow rebuilt as a reliable event stream.",
+      "Whisper, ElevenLabs and image generation in client apps; local models fine-tuned and served (Qwen, Ollama, llama.cpp).",
+      "React Native client for a model-scored submission app; a short 2D teacher-assistant build.",
+      "Tech stack: TypeScript, React, Node.js, Python (FastAPI, Flask), PostgreSQL, OpenAI and Claude APIs, vector search, Whisper, ElevenLabs, nginx, Docker.",
     ],
   },
   {
@@ -147,7 +122,7 @@ export const companies = [
     position: "Frontend Engineer",
     startDate: "Oct 2021",
     endDate: "Feb 2025",
-    summary: "Frontend performance, 40+ product features, architecture and mentoring.",
+    summary: "Frontend performance, 40+ product features, architecture, internal seminars.",
     responsibilities: [
       "Led frontend performance improvements: implemented lazy loading, reducing render time from 1–2 minutes to under 5 seconds.",
       "Built and maintained React/TypeScript components with Redux and Context API for scalability.",
@@ -155,7 +130,7 @@ export const companies = [
       "Delivered 40+ new product features and improved customer experience.",
       "Collaborated with backend teams to integrate REST and SOAP APIs, reducing error rates by 30%.",
       "Enhanced CI/CD pipelines (Jenkins, GitHub Actions) to optimize builds and deployments.",
-      "Led frontend architecture discussions and mentored 20+ engineers.",
+      "Ran internal seminars on frontend architecture and performance for 20+ engineers; prepared a project handover for the client team — mapped the system end to end and presented it.",
       "Authored 15-page technical documentation, reducing onboarding time by 40%."
     ]
   },
@@ -243,9 +218,9 @@ export const clientWork = {
       headline: "How do you make generated video worth watching?",
       diagram: "video",
       visual: "An AI agent producing a video frame",
-      period: "2025 — 2026 · long-term client",
-      what: "The question behind it: how do you assemble all the components of a generation system so that the output is useful and engaging, not just generated?",
-      built: "Image generation, prompt configuration, and working out which components of a video affect viewer retention — assembled into one pipeline, with the web app around it built from scratch: frontend, backend, deployment.",
+      period: "Sep 2025 — present · long-term client",
+      what: "A product that turns an idea into finished images and video.",
+      built: "Image and video generation assembled into one product, with the web app around it built from scratch: frontend, backend, deployment.",
       stack: ["Python", "React", "Image & video generation models", "nginx"],
     },
     {
@@ -435,7 +410,7 @@ export const contacts = [
 
 export const bio = {
   name: "Maksim Kunaev",
-  occupation: "Senior Full-Stack Engineer · AI / LLM",
+  occupation: "Senior Full-Stack Engineer · AI agents and generation pipelines in production",
   photo: "/media/photo.webp",
   technologies,
   description: bioDescription,
@@ -465,7 +440,7 @@ export const skills = [
   "Performance optimization – lazy loading, code splitting, rendering efficiency",
   "CI/CD with Jenkins and GitHub Actions; Docker, VPS deployment, GraphQL",
   "Team leadership, documentation, and mentoring experience",
-  "Languages: English (Fluent), Russian (Native), Serbian-Croatian (Intermediate)"
+  "Languages: English (Fluent), Russian (Native), Spanish (Basic), Serbian-Croatian (Intermediate)"
 ];
 
 
@@ -476,7 +451,7 @@ export const skillGroups = [
   { label: "Frontend", items: ["React", "TypeScript", "Vue", "Next.js", "Nuxt", "Angular", "Redux / MobX"] },
   { label: "Backend", items: ["Python (Flask, FastAPI)", "Node.js", "PostgreSQL", "MongoDB", "REST", "WebSockets"] },
   { label: "Delivery", items: ["Docker", "nginx", "GitHub Actions", "Jenkins", "Jest / Vitest / Cypress"] },
-  { label: "Languages", items: ["English (fluent)", "Russian (native)", "Serbian-Croatian (intermediate)"] },
+  { label: "Languages", items: ["English (fluent)", "Russian (native)", "Spanish (basic)", "Serbian-Croatian (intermediate)"] },
 ];
 
 export const education = [
@@ -497,13 +472,9 @@ export const projects = [
     title: "🎬 ClipSpark — AI Viral Clip Generator",
     headline: "Raw footage in, a postable clip out.",
     problemStatement:
-      "Turning long raw footage into a short, postable clip takes real editing time — finding the hook, cutting the boring parts, and getting pacing right, every single time.",
+      "Cutting a postable clip out of raw footage takes editing time, every time.",
     keyFeatures: [
-      "Upload raw video, AI transcribes it and splits it into scenes at natural speech boundaries",
-      "Recursive re-transcription fixes long, poorly-segmented scenes automatically",
-      "LLM picks the strongest hook and curates scenes to fit a target clip length (short/medium/long)",
-      "Review and toggle scenes before rendering, with drag-and-drop final clip ordering",
-      "Burned-in captions with per-word timing, rebased to the final clip",
+      "Transcription and scene split, an LLM picks the hook, render with captions",
     ],
     technologies: [
       "React (frontend)",
