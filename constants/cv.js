@@ -85,7 +85,7 @@ export const resumeSummary = `Full-stack engineer: six years of frontend, since 
 // positions, so frontend searches still match.
 export const linkedin = {
   headline:
-    "Senior Full-Stack Engineer · AI agents and generation pipelines in production | TypeScript · React · Python",
+    "Senior Full-Stack Engineer · building AI products end-to-end | TypeScript · React · Python",
   about: `Full-stack engineer. Six years of frontend, and since 2025 full stack with AI: agents with tool calling, retrieval, voice, image and video generation — built for clients and running in production.
 
 Now: one long-term contract — a product built from scratch (React, Python, deployment), from idea to generated images and video.
@@ -112,7 +112,7 @@ export const companies = [
     summary:
       "Independent contracts since 2025: one long-term product build, several shorter AI projects.",
     responsibilities: [
-      "Long-term client (Sep 2025 – present): full web app from scratch — React, Python, nginx deploy — with AI image and video generation inside; e-commerce and social platform integrations.",
+      "Long-term contract (Sep 2025 – present): full web app from scratch — React, Python, nginx deploy — with AI image and video generation inside; e-commerce and social platform integrations.",
       "AI chat assistant from scratch: intent → parameters → API actions (React, Node.js, OpenAI function calling).",
       "AI trading bot answering from live data via tool calling.",
       "RAG document Q&A: frontend and retrieval layer, agent memory.",
@@ -422,7 +422,7 @@ export const contacts = [
 
 export const bio = {
   name: "Maksim Kunaev",
-  occupation: "Senior Full-Stack Engineer · AI agents and generation pipelines in production",
+  occupation: "Senior Full-Stack Engineer · building AI products end-to-end",
   photo: "/media/photo.webp",
   technologies,
   description: bioDescription,
