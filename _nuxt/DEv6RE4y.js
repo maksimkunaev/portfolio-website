@@ -1,0 +1,1 @@
+import{h as a,i as s,j as r,k as o,l as i}from"./EX2cyR_7.js";function u(n){var t;const e=n||s();return((t=e==null?void 0:e.ssrContext)==null?void 0:t.head)||(e==null?void 0:e.runWithContext(()=>{if(r())return o(i)}))}function d(n,e={}){const t=u(e.nuxt);if(t)return a(n,{head:t,...e})}export{d as u};
