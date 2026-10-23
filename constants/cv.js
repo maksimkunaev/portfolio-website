@@ -205,18 +205,14 @@ export const companies = [
   }
 ];
 
-// constants/cv.js
-// `heading` is the title printed above the section; Home and About have none.
-export const sections = [
-  { label: "Home", componentName: "Bio", link: "bio", showLink: false },
-  { label: "About", componentName: "About", link: "about", showLink: true },
-  { label: "Work", heading: "Recent work", componentName: "ClientWork", link: "work", showLink: true },
-  { label: "Experience", heading: "Experience", componentName: "Experience", link: "experience", showLink: true },
-  { label: "Research", heading: "Research", componentName: "Research", link: "research", showLink: true },
-  { label: "Writing", heading: "Writing", componentName: "Writing", link: "writing", showLink: true },
-  { label: "Projects", heading: "Projects", componentName: "Projects", link: "projects", showLink: true },
-  { label: "Skills", heading: "Skills", componentName: "Skills", link: "skills", showLink: true },
-  { label: "Contact", heading: "Contact", componentName: "Contact", link: "contact", showLink: true },
+// Site pages, one per entity in this file; the front page is the index of them.
+// /cv/ is the printable resume (pages/cv.vue), outside the site layout.
+export const nav = [
+  { label: "Experience", path: "/experience/" },
+  { label: "Projects", path: "/projects/" },
+  { label: "Research", path: "/research/" },
+  { label: "Writing", path: "/writing/" },
+  { label: "CV", path: "/cv/" },
 ];
 
 // Client work, anonymous by class of system. No client names, no client UI:
@@ -230,7 +226,7 @@ export const clientWork = {
       headline: "From an idea to finished images and video.",
       diagram: "video",
       visual: "An AI agent producing an image and a video frame",
-      period: "Sep 2025 — present · long-term client",
+      period: "Sep 2025 — present · long-term contract",
       what: "A product that turns an idea into finished images and video.",
       built: "Image and video generation assembled into one product, with the web app around it built from scratch: frontend, backend, deployment.",
       stack: ["Python", "React", "Image & video generation models", "nginx"],
@@ -313,6 +309,9 @@ export const writing = {
 // part no other portfolio has.
 export const research = {
   title: "Aion — Symbolic Reasoning Playground",
+  // LinkedIn Projects entry, one line; the site Projects page shows it.
+  summary:
+    "Experiments on one question: how to make an agent reliable — explicit state, explicit rules, and code that checks the model instead of the model checking itself.",
   // A recorded run of the real planner, replayed in the browser without a
   // server. Rebuilt with `python demo/build.py` in the hostel experiment.
   demo: "/demos/hostel/index.html",
@@ -481,7 +480,7 @@ export const education = [
 
 export const projects = [
   {
-    title: "🎬 ClipSpark — AI Viral Clip Generator",
+    title: "ClipSpark — AI Viral Clip Generator",
     headline: "Raw footage in, a postable clip out.",
     problemStatement:
       "Cutting a postable clip out of raw footage takes editing time, every time.",
@@ -507,7 +506,7 @@ export const projects = [
     ],
   },
   {
-    title: "🌐 NeuroOrb — Interactive 3D Visualization",
+    title: "NeuroOrb — Interactive 3D Visualization",
     headline: "What does an AI look like while it thinks?",
     problemStatement:
       "AI interfaces lack engaging visual feedback during processing states. Users need dynamic animations that communicate AI activity in an intuitive, visually appealing way.",
@@ -568,7 +567,7 @@ export const projects = [
     ],
   },
   {
-    title: "📄 ResumeQuick AI",
+    title: "ResumeQuick AI",
     headline: "Plain text in, a formatted resume out.",
     problemStatement:
       "Job seekers need a simple way to quickly convert plain text information into a formatted resume without complicated tools.",

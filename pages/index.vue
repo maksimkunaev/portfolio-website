@@ -1,66 +1,70 @@
 <template>
-  <div class="index-page-container">
-    <section v-for="section in sections" :id="section.link" :key="section.link" class="wrapper">
-      <div class="component">
-        <h2 v-if="section.heading" class="section-heading">{{ section.heading }}</h2>
-        <component :is="section.componentName" />
+  <div>
+    <header class="hero">
+      <h1>{{ headline }} <em>{{ headlineAccent }}</em></h1>
+      <p class="muted">{{ aboutFirst }}</p>
+      <p class="small">{{ bio.location }} · <a :href="bio.contacts[0].link">{{ bio.contacts[0].label }}</a></p>
+    </header>
+
+    <section class="section">
+      <div class="label">Experience</div>
+      <div class="body">
+        <div class="rows">
+          <NuxtLink v-for="job in companies" :key="job.label + job.startDate" to="/experience/" class="row">
+            <span class="title">{{ job.position }} · {{ job.label }}</span>
+            <span class="when">{{ job.startDate }} – {{ job.endDate }}</span>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="label">Projects</div>
+      <div class="body">
+        <div class="rows">
+          <NuxtLink to="/research/" class="row">
+            <span class="title">{{ research.title }}</span>
+            <span class="when">{{ research.period }}</span>
+          </NuxtLink>
+          <NuxtLink v-for="project in projects" :key="project.title" to="/projects/" class="row">
+            <span class="title">{{ project.title }}</span>
+            <span class="when">{{ project.date }}</span>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="label">Writing</div>
+      <div class="body">
+        <div class="rows">
+          <NuxtLink to="/writing/" class="row">
+            <span class="title">{{ writing.title }}</span>
+            <span class="when">article · {{ writing.status.toLowerCase() }}</span>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="label">Contact</div>
+      <div class="body">
+        <div class="links">
+          <a v-for="contact in bio.contacts" :key="contact.link" :href="contact.link">{{ contact.label }}</a>
+          <a v-for="social in bio.socials" :key="social.link" :href="social.link" target="_blank">{{ social.label }} ↗</a>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
-<script>
-import { sections } from "~/constants/cv";
+<script setup>
+import { bio, linkedin, companies, research, projects as allProjects, writing } from "~/constants/cv";
 
-import Bio from '~/components/Bio/Bio.vue'
-import About from '~/components/About/About.vue'
-import Experience from '~/components/Experience/Experience.vue'
-import Skills from '~/components/Skills/Skills.vue'
-import Projects from '~/components/Projects/Projects.vue'
-import Research from '~/components/Research/Research.vue'
-import ClientWork from '~/components/ClientWork/ClientWork.vue'
-import Writing from '~/components/Writing/Writing.vue'
-import Contact from '~/components/Contact/Contact.vue'
+const projects = allProjects.filter((project) => !project.hidden);
 
-export default {
-  name: 'IndexPage',
-  components: {
-    Bio,
-    About,
-    Experience,
-    Skills,
-    Projects,
-    Research,
-    ClientWork,
-    Writing,
-    Contact,
-  },
-  data() {
-    return {
-      sections,
-    }
-  },
-}
+// The headline is bio.occupation; its last words carry the accent.
+const headlineAccent = "end-to-end";
+const headline = bio.occupation.replace(headlineAccent, "").trim();
+const aboutFirst = linkedin.about.split("\n\n")[0];
 </script>
-
-<style lang="stylus" scoped>
-@import "../assets/css/stylus-variables.styl"
-
-.wrapper
-  padding: 72px 24px 0;
-  scroll-margin-top: 40px;
-
-  &:first-child
-    padding-top: 120px;
-
-  &:nth-child(2)
-    padding-top: 32px;
-
-  @media (max-width: $mobile-size)
-    padding: 56px 16px 0;
-
-.component
-  width: $layout-width;
-  max-width: 100%;
-  margin 0 auto
-</style>
