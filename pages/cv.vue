@@ -11,6 +11,7 @@
         <span>github.com/maksimkunaev</span>
         <span>linkedin.com/in/maksim-k-1a9451163</span>
       </p>
+      <a class="cv-download" href="/Maksim_Kunaev_CV.pdf" download>Download PDF</a>
     </header>
 
     <section class="cv-section">
@@ -99,6 +100,7 @@ html.cv-page, html.cv-page body { background: #ffffff; }
 .cv-title { font-size: 11.5pt; color: #2a3346; margin: 0 0 4px; }
 .cv-contact { margin: 0; color: #4a5468; font-size: 9.6pt; display: flex; flex-wrap: wrap; gap: 0 6px; }
 .cv-contact span + span::before { content: "·"; margin-right: 6px; color: #9aa3b5; }
+.cv-download { display: inline-block; margin-top: 6px; font-size: 9.6pt; color: #2a3346; text-decoration: underline; }
 
 .cv-section { margin-top: 10px; break-inside: auto; }
 .cv h2 {
@@ -123,5 +125,6 @@ html.cv-page, html.cv-page body { background: #ffffff; }
 @media print {
   .cv { max-width: none; padding: 0; font-size: 9.8pt; }
   a { color: inherit; text-decoration: none; }
+  .cv-download { display: none; }
 }
 </style>
